@@ -1,12 +1,12 @@
 ## Getting Started
 
--   STEP1 - Login to AWS console and create EC2 instance
--   STEP2 - Setup GitHub Repo and Push your project
--   STEP3 - Login to EC2 instance
--   STEP4 - Setup GitHub Action runner on EC2 instance
--   STEP5 - Create GitHub Secrets for managing environment variables
--   STEP6 - Create CI/CD Workflow using GitHub Action
--   STEP7 - Install nodejs and nginx on EC2 instance
+- STEP1 - Login to AWS console and create EC2 instance
+- STEP2 - Setup GitHub Repo and Push your project
+- STEP3 - Login to EC2 instance
+- STEP4 - Setup GitHub Action runner on EC2 instance
+- STEP5 - Create GitHub Secrets for managing environment variables
+- STEP6 - Create CI/CD Workflow using GitHub Action
+- STEP7 - Install nodejs and nginx on EC2 instance
 
 ```bash
 sudo apt update
@@ -18,13 +18,13 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y nginx
 ```
 
--   STEP8 - Install pm2
+- STEP8 - Install pm2
 
 ```bash
 sudo npm i -g pm2
 ```
 
--   STEP9 - Config nginx and restart it
+- STEP9 - Config nginx and restart it
 
 ```bash
 cd /etc/nginx/sites-available
@@ -42,13 +42,13 @@ location /api {
 sudo systemctl restart nginx
 ```
 
--   STEP10 - Run backend api in the background as a service using pm2
+- STEP10 - Run backend api in the background as a service using pm2
 
 ```bash
 pm2 start server.js --name=BackendAPI
 ```
 
--   STEP11 - Add the command in yml script of project to restart the nodejs api server after every push to the repo
+- STEP11 - Add the command in yml script of project to restart the nodejs api server after every push to the repo
 
 ```bash
 run: pm2 restart BackendAPI
