@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
+import mongoose from 'mongoose';
+mongoose.set('strictQuery', false);
 
 const connectDB = async () => {
   try {
@@ -11,4 +11,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+export { connectDB };

@@ -1,11 +1,11 @@
-const User = require("../models/User");
+import User from '../models/User.js';
 
 const createUser = async (req, res, next) => {
   try {
     const { name, email } = req.body;
     if (!name || !email) {
       res.status(400);
-      return next(new Error("name & email fields are required"));
+      return next(new Error('name & email fields are required'));
     }
 
     // check if user already exists
@@ -13,11 +13,12 @@ const createUser = async (req, res, next) => {
 
     if (isUserExists) {
       res.status(404);
-      return next(new Error("User already exists"));
+      return next(new Error('User already exists'));
     }
 
     const user = await User.create({
-      name, email
+      name,
+      email,
     });
 
     res.status(200).json({
@@ -28,7 +29,7 @@ const createUser = async (req, res, next) => {
     console.log(error);
     return next(error);
   }
-}
+};
 
 const getUsers = async (req, res, next) => {
   try {
@@ -51,7 +52,7 @@ const getUser = async (req, res, next) => {
 
     if (!user) {
       res.status(404);
-      return next(new Error("User not found"));
+      return next(new Error('User not found'));
     }
 
     res.status(200).json({
@@ -71,7 +72,7 @@ const updateUser = async (req, res, next) => {
 
     if (!user) {
       res.status(404);
-      return next(new Error("User not found"));
+      return next(new Error('User not found'));
     }
 
     const updatedUser = await User.findByIdAndUpdate(
@@ -101,14 +102,14 @@ const deleteUser = async (req, res, next) => {
 
     if (!user) {
       res.status(404);
-      return next(new Error("User not found"));
+      return next(new Error('User not found'));
     }
 
     await User.findByIdAndDelete(id);
 
     res.status(200).json({
       success: true,
-      message: "User has been deleted.",
+      message: 'User has been deleted.',
     });
   } catch (error) {
     console.log(error);
@@ -116,10 +117,4 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  getUser,
-  getUsers,
-  createUser,
-  updateUser,
-  deleteUser,
-};
+export { getUser, getUsers, createUser, updateUser, deleteUser };
