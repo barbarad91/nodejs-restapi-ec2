@@ -8,7 +8,7 @@ import userRoutes from './routes/users.js'
 import { errorHandler } from './middlewares/error.js'
 
 // Connect to DB
-connectDB()
+await connectDB()
 
 // Express App
 const app = express()
